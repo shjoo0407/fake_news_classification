@@ -1,2 +1,2 @@
 # fake_news_classification
-kaggle / 가짜 뉴스 분류
+자세한 내용은 ipynb 참고!
