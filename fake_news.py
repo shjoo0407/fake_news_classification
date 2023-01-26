@@ -165,3 +165,101 @@ def plot_confusion_matrix(cm, classes,
     plt.ylabel('True label')
     plt.xlabel('Predicted label')
 
+X__train, X__test,Y__train,Y__test = train_test_split(X,Y,test_size=0.33, random_state=42)
+
+"""### classification model : Multinomial naive bayes
+
+- NLP에서 많이 사용하는 모델이다.
+- TF를 사용한다.
+- 자세한 내용은 따로 정리하자!
+
+
+"""
+
+from sklearn.naive_bayes import MultinomialNB
+classifier=MultinomialNB()
+
+from sklearn import metrics
+import itertools
+
+classifier.fit(X__train, Y__train)
+prediction__ = classifier.predict(X__test)
+score = metrics.accuracy_score(Y__test,prediction__)
+print(f'accuracy : {round(score,3)}')
+cm1 = metrics.confusion_matrix(Y__test, prediction__)
+plot_confusion_matrix(cm1, classes=['Fake','Real'])
+
+"""### classification model : passive aggressive classifier
+
+- online learning 의 한 방법.
+"""
+
+X2_train, X2_test, Y2_train, Y2_test = train_test_split(X, Y, test_size=0.33, random_state=42)
+
+from sklearn.linear_model import PassiveAggressiveClassifier
+linear_clf = PassiveAggressiveClassifier(max_iter=50)
+
+linear_clf.fit(X2_train, Y2_train)
+prediction2 = linear_clf.predict(X2_test)
+score = metrics.accuracy_score(Y2_test, prediction2)
+print("accuracy:   %0.3f" % score)
+cm2 = metrics.confusion_matrix(Y2_test, prediction2)
+plot_confusion_matrix(cm2, classes=['FAKE Data', 'REAL Data'])
+
+"""###  Buildling a predictive system
+
+
+"""
+
+# Logistic Regression
+
+X_new = X_test[0]
+
+prediction = model.predict(X_new)
+print(prediction)
+
+if(prediction[0] ==0):
+  print('The news is Real')
+else:
+  print('The news is fuckin\' Fake')
+
+# multinomial naive bayes
+X1_new = X__test[0]
+
+prediction = model.predict(X1_new)
+print(prediction)
+
+if (prediction[0]==0):
+  print('The news is Real')
+else:
+  print('The news is fuckin\' Fake')
+
+# passive aggressive classifier
+
+X2_new = X2_test[0]
+
+prediction = model.predict(X2_new)
+print(prediction)
+
+if (prediction[0]==0):
+  print('The news is Real')
+else:
+  print('The news is Fake')
+
+# report
+
+# show the prediction, recall, F1 Score ,,,
+
+from sklearn.metrics import classification_report
+print("Logistic Regression report")
+print(classification_report(Y_test,X_test_prediction))
+print("="*60)
+print("Multinomial NB report")
+print(classification_report(Y__test,prediction__))
+print("="*60)
+print("Passive Aggressive report")
+print(classification_report(Y2_test,prediction2))
+print("="*60)
+
+"""Passive Aggressive model 이 가장 정확도가 높게 나왔다."""
+
