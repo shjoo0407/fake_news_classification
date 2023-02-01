@@ -17,5 +17,5 @@
 
 ## 결과
 - passive aggressive model이 가장 잘 분류하고 있다.
-![모델링결과](https://user-images.githubusercontent.com/69780999/216019456-aa50ac27-0515-4ff6-b129-abfc0fa40565.PNG)
+- ![모델링결과](https://user-images.githubusercontent.com/69780999/216019456-aa50ac27-0515-4ff6-b129-abfc0fa40565.PNG)
 
