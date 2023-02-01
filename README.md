@@ -1,7 +1,11 @@
 # fake_news_classification
-
+- id :  unique id for a news article, Integer
+- title : the title of a news article
+- author : author of the news article
+- text : the text of the article (could be incomplete)
+- label : a label that marks the article as potentially unreliable, Integer
+-  1 : Fake    0 : Non-fake
 ## EDA
-- id, title, author, text 변수가 있다.
 - fake data 가 10413개, non-fake data가 10387개 있는 균형적인 데이터다.
 - 비어 있는 곳은 (결측치) 들은 모두 빈칸으로 대체하였다.
 
